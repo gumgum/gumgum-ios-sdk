@@ -105,6 +105,8 @@ Keep in mind that in-screen ads are maintained in-between view controller presen
 }
 ```
 
+Full Documentation can be found [here](http://cocoadocs.org/docsets/GumGumiOSSDK/0.1.1/).
+
 That's it!
 ### Contact
 Follow GumGum on Twitter ([@GumGum])
