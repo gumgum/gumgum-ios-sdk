@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "GumGumiOSSDK"
-  s.version          = "0.1.1"
+  s.version          = "0.1.2"
   s.summary          = "Serve GumGum ads in your native mobile app."
   s.description      = "GumGum is an advertising publisher platform. It is the forefront of in-image technology."
   s.homepage         = "http://gumgum.com"
@@ -22,9 +22,6 @@ Pod::Spec.new do |s|
 
   s.requires_arc = true
   s.resource = 'GumGumiOSSDK.bundle'
-  s.public_header_files = 'GumGumiOSSDK.framework/Versions/A/Headers/*.h'
   s.frameworks = 'UIKit', 'Security', 'CoreGraphics', 'WebKit', 'Foundation'
-
-  s.xcconfig = { 'FRAMEWORK_SEARCH_PATHS' => "$(PODS_ROOT)/GumGumiOSSDK" }
-  s.preserve_paths = 'GumGumiOSSDK.framework'
+  s.ios.vendored_frameworks = 'GumGumiOSSDK.framework'
 end
