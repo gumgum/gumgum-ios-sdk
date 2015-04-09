@@ -1,0 +1,3 @@
+[submodule "gumgumiossdk"]
+	path = gumgumiossdk
+	url = git@bitbucket.org:gumgum/gumgumiossdk.git
