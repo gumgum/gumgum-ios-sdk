@@ -113,7 +113,7 @@ Follow GumGum on Twitter ([@GumGum])
 ### Author
 Jake Peterson ([@jakenberg])
 ### License
-Our license can be found [here.](LICENSE.docx)
+Our license can be found [here.](LICENSE.txt)
 
 [GumGumiOSSDK project]:https://bitbucket.org/gumgum/gumgumiossdk
 [Stack Overflow]:http://www.stackoverflow.com/questions/tagged/gumgum
