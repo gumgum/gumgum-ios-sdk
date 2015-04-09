@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "GumGumiOSSDK"
-  s.version          = "0.1"
+  s.version          = "0.1.1"
   s.summary          = "Serve GumGum ads in your native mobile app."
   s.description      = "GumGum is an advertising publisher platform. It is the forefront of in-image technology."
   s.homepage         = "http://gumgum.com"
@@ -25,6 +25,6 @@ Pod::Spec.new do |s|
   s.public_header_files = 'GumGumiOSSDK.framework/Versions/A/Headers/*.h'
   s.frameworks = 'UIKit', 'Security', 'CoreGraphics', 'WebKit', 'Foundation'
 
-  s.xcconfig = { 'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/GumGumiOSSDK' }
+  s.xcconfig = { 'FRAMEWORK_SEARCH_PATHS' => "$(PODS_ROOT)/GumGumiOSSDK" }
   s.preserve_paths = 'GumGumiOSSDK.framework'
 end
