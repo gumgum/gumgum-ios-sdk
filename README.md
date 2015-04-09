@@ -27,7 +27,7 @@ If you have never used [Cocoapods] before, you will need to [install it first].
 
 ## Usage
 ```ObjC
-#import <GumGumiOSSDK.h>
+#import <GumGumiOSSDK/GumGumiOSSDK.h>
 ```
 In your App Delegate:
 ```ObjC
