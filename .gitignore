@@ -26,4 +26,9 @@ DerivedData
 #Pods/
 
 gumgumiossdk/
-Example/
+Example/Pods
+
+# Environment variables
+Example/Example.xcodeproj/xcuserdata/jakepeterson.xcuserdatad/xcschemes/Staging.xcscheme
+
+.travis.yml
