@@ -11,11 +11,26 @@
 
 @interface GGInImageView : UIImageView
 
+/*!
+ *  The url of the image being shown.
+ */
 @property (nonatomic, strong) NSURL *imageURL;
-@property (nonatomic, strong) NSURL *pageURL;
-@property (nonatomic, strong) NSString *keywords;
-@property (nonatomic, weak) UIViewController <GGAdDelegate>*delegate;
 
-- (void)load;
+/*!
+ *  The url of the page which the ad is being served on.
+ */
+@property (nonatomic, strong) NSURL *pageURL;
+
+/*!
+ *  A description (delimited by commas) of the image being shown.
+ */
+@property (nonatomic, strong) NSString *keywords;
+
+/*!
+ *  A delegate for receiving callback events from the adView.
+ *
+ * @see GGAdDelegate
+ */
+@property (nonatomic, weak) UIViewController <GGAdDelegate>*delegate;
 
 @end

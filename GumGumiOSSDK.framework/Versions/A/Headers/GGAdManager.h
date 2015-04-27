@@ -16,15 +16,31 @@ typedef void(^GGObjectResultsBlock)(id responseObject, NSError *error);
 typedef void(^GGAdCompletionBlock)(GGBadgeInfo *badgeInfo, NSError *error);
 
 @interface GGAdManager : NSObject
+/*!
+ *  Creates and returns a 'GGAdManager' object
+ */
 + (GGAdManager *)sharedManager;
 
 /*!
- *  The trackingId must be set in order to serve an advertisement. Set this in your app delegate.
+ *  The zone provided to you by our publisher development team.
+ *
+ *  @discussion The zone must be set in order to serve any advertisments. Set this in your app delegate or as early as you can.
  */
 @property (strong, nonatomic) NSString *zoneId;
 
-@property (nonatomic, readonly) WKProcessPool *processPool;
-
+/*!
+ *  Subscribes and builds an adView.
+ *
+ *  @param adView the adView you would like to build.
+ *
+ *  @warning you cannot properly build an adView without subscribing it.
+ */
 - (void)subscribeAdView:(GGAdView *)adView;
+
+/*!
+ *  Un-subscribes an adView.
+ *
+ *  @param adView the adView you want to un-subscribe
+ */
 - (void)unSubscribeAdView:(GGAdView *)adView;
 @end
