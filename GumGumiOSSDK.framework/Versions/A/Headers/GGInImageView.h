@@ -31,6 +31,11 @@
  *
  * @see GGAdDelegate
  */
-@property (nonatomic, weak) UIViewController <GGAdDelegate>*delegate;
+@property (nonatomic, weak) UIViewController <GGAdDelegate>* delegate;
+
+/*!
+ *  An optional value for tracking re-use in table views.
+ */
+@property (nonatomic, copy) NSIndexPath *indexPath;
 
 @end

@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @class GGAdView;
-@class GGBadgeInfo;
+@class GGBadge;
 @class WKProcessPool;
 
 typedef void(^GGObjectResultsBlock)(id responseObject, NSError *error);
-typedef void(^GGAdCompletionBlock)(GGBadgeInfo *badgeInfo, NSError *error);
+typedef void(^GGAdCompletionBlock)(GGBadge *badgeInfo, NSError *error);
 
 @interface GGAdManager : NSObject
 /*!
@@ -35,7 +35,7 @@ typedef void(^GGAdCompletionBlock)(GGBadgeInfo *badgeInfo, NSError *error);
  *
  *  @warning you cannot properly build an adView without subscribing it.
  */
-- (void)subscribeAdView:(GGAdView *)adView;
+- (void)subscribeAdView:(GGAdView *)adView completion:(void(^)())completionBlock;
 
 /*!
  *  Un-subscribes an adView.

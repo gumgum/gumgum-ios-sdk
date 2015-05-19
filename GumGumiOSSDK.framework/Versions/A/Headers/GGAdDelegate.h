@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class GGBadgeInfo;
+@class GGBadge;
 @class GGAdView;
 
 /*!
