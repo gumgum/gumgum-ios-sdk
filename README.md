@@ -29,10 +29,20 @@ If you have never used [Cocoapods] before, you will need to [install it first].
 ```ObjC
 #import <GumGumiOSSDK/GumGumiOSSDK.h>
 ```
-In your App Delegate:
+Setup your App's information. Do this in your App Delegate or as early as you can.
 ```ObjC
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [[GGAdManager sharedManager] setZoneId:@"your zone ID"];
+    // Make sure you have setup your keyWindow first.
+    [window makeKeyAndVisible];
+
+    // All values are required.
+    GGAdManager *manager = [GGAdManager sharedManager];
+    manager.zoneId = @"your zone ID";
+    manager.keywords = @"An ad is worth a million billion impressions.";
+    manager.storeURL = [NSURL URLWithString:@"your app store url or website url"];
+    manager.isPaid = YES; // Defaults to NO
+
+    return YES;
 }
 ```
 ### Getting an In-Image Ad
@@ -45,47 +55,30 @@ In `-viewDidLoad` (or any method called after your initialization):
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    GGInImageView *imageView = [[GGInImageView alloc] init];
-
     // All values are required
+    GGInImageView *imageView = [[GGInImageView alloc] init];
     imageView.imageURL = [NSURL URLWithString:@"http://gumgum.com"];
-    imageView.keywords = @"An ad is worth a million billion impressions.";
-    imageView.pageURL = [NSURL URLWithString:@"http://gumgum.com"];
-    imageView.delegate = self; // Your UIViewController must conform to GGAdDelegate
+    imageView.delegate = self; // A UIViewController conforming to GGAdDelegate
+
+    // The ad will NOT start loading until an image is set.
+    imageView.image = [UIImage alloc] init];
 }
 ```
-To conform your `UIViewController` class to `GGAdDelegate`:
+To conform a `UIViewController` to `GGAdDelegate`:
 ```ObjC
 @interface YourViewController: UIViewController <GGAdDelegate>
 ```
-The ad will __NOT__ start loading unless you set an image.
-```ObjC
-UIImage *image = [[UIImage alloc] init];
-
-GGInImageView *imageView = [[GGInImageView alloc] initWithImage:image];
-// or
-imageView.image = image;
-```
 
 ### Getting an In-Screen Ad
-In-screen ads are controlled by the `UINavigationController` that manages your child controllers.
+In-screen ads are controlled by an instance of `UINavigationController`.
 ```ObjC
 UIViewController *viewController = [[UIViewController alloc] init];
 GGInScreenNavigationController *navigationController = [[GGInScreenNavigationController alloc] initWithRootViewController:viewController];
 ```
-Now in your `UIViewController`, set your `keywords` and `pageURL`:
-```ObjC
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
 
-    if ([self.navigationController conformsToProtocol:@protocol(GGAdDelegate)]) {
-        GGInScreenNavigationController *navController = (GGInScreenNavigationController *)self.navigationController;
-        navController.keywords = @"Beauty, Lifestlye, Leisure";
-        navController.pageURL = [NSURL URLWithString:@"http://www.vogue.com"];
-    }
-}
-```
-Keep in mind that in-screen ads are maintained in-between view controller presentations. So if you are pushing/presenting a view controller where you do not want to display an in-screen ad, simply set the `inScreenHidden` property on your navigation controller:
+Keep in mind that in-screen ads are maintained in-between view controller presentations. To control which view controllers display an ad, simply conform the view controllers you'd like to display an ad with `GGAdDelegate`.
+
+If you happen to conform a view controller to `GGAdDelegate` for displaying a `GGInImageView`, but simeltaneously don't want an in-screen ad to be displayed, simply set the `inScreenHidden` property on your navigation controller:
 ```ObjC
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -95,7 +88,7 @@ Keep in mind that in-screen ads are maintained in-between view controller presen
     }
 }
 
-// Don't forget to restore inScreenHidden when leaving this view controller!
+// Don't forget to restore inScreenHidden when leaving that view controller!
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
 

@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "GGAdDelegate.h"
 
-@class GGAdViewController;
-
 @interface GGInScreenNavigationController : UINavigationController <GGAdDelegate>
 
 /*!
@@ -30,13 +28,6 @@
  *  Words (delimited by commas) that describe the page the ad is being served on.
  */
 @property (strong, nonatomic) NSString *keywords;
-
-/*!
- *  Initiates a reload for the current ad being displayed.
- *
- *
- */
-- (void)reload;
 @end
 
 @interface UIViewController (GGInScreenNavigationControllerItem)
