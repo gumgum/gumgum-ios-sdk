@@ -9,3 +9,5 @@
 #import <GumGumiOSSDK/GGAdManager.h>
 #import <GumGumiOSSDK/GGInImageView.h>
 #import <GumGumiOSSDK/GGInScreenNavigationController.h>
+#import <GumGumiOSSDK/GGInSlotAd.h>
+#import <GumGumiOSSDK/GGInSlotManager.h>

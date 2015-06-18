@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "GumGumiOSSDK"
-  s.version          = "0.1.2"
+  s.version          = "0.1.3"
   s.summary          = "Serve GumGum ads in your native mobile app."
   s.description      = "GumGum is an advertising publisher platform. It is the forefront of in-image technology."
   s.homepage         = "http://gumgum.com"

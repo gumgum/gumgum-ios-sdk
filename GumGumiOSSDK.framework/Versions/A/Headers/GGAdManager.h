@@ -44,6 +44,8 @@ typedef void(^GGAdCompletionBlock)(GGBadge *badgeInfo, NSError *error);
  */
 @property (nonatomic) BOOL isPaid;
 
+@property (nonatomic, strong) NSURL *appStoreUrl;
+
 /*!
  *  Subscribes and builds an adView & badgeButton.
  *
@@ -62,4 +64,13 @@ typedef void(^GGAdCompletionBlock)(GGBadge *badgeInfo, NSError *error);
  *  @param url the url associated to the adView you'd like to remove.
  */
 - (void)unSubscribeUrl:(GGURL *)url;
+
+/*!
+ *  For GumGum employees to access important ad information
+ *
+ *  @param url the url of the ad you are interested in seeing the badge for
+ *
+ */
+- (void)displayAdBadgeViewControllerForUrl:(GGURL *)url;
+
 @end
