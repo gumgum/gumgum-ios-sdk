@@ -38,17 +38,25 @@ Setup your App's information. Do this in your App Delegate or as early as you ca
     // All values are required.
     GGAdManager *manager = [GGAdManager sharedManager];
     manager.zoneId = @"your zone ID";
-    manager.keywords = @"An ad is worth a million billion impressions.";
-    manager.storeURL = [NSURL URLWithString:@"your app store url or website url"];
+    manager.appStoreUrl = [NSURL URLWithString:@"your app store url or website url"];
     manager.isPaid = YES; // Defaults to NO
 
     return YES;
 }
 ```
-### Getting an In-Image Ad
-Replace the `UIImageView` you want your ad to be placed in with `GGInImageView`.
+### Getting a Native Ad
+```ObjC
+[GGNativeAdManager getNativeAdForSize:CGSizeMake(320, 100)
+               viewControllerDelegate:self
+                           completion:^(GGNativeAd *nativeAd, NSError *error) {
+    // Your logic for displaying the native ad
+}];
+```
 
-__If you use storyboards__ you will need to change the **Custom Class** field of your `UIImageView` as well.
+### Getting an In-Image Ad
+Inherit the `UIImageView` you want your ad to be placed from `GGInImageView`.
+
+__If you use storyboards__ you will need to change the **Custom Class** field of your `UIImageView`.
 
 In `-viewDidLoad` (or any method called after your initialization):
 ```ObjC
@@ -58,7 +66,8 @@ In `-viewDidLoad` (or any method called after your initialization):
     // All values are required
     GGInImageView *imageView = [[GGInImageView alloc] init];
     imageView.imageURL = [NSURL URLWithString:@"http://gumgum.com"];
-    imageView.delegate = self; // A UIViewController conforming to GGAdDelegate
+    imageView.pageURL = [NSURL URLWithString:@"http://gumgum.com"];
+    imageView.delegate = // A UIViewController conforming to GGAdDelegate
 
     // The ad will NOT start loading until an image is set.
     imageView.image = [UIImage alloc] init];
@@ -74,6 +83,8 @@ In-screen ads are controlled by an instance of `UINavigationController`.
 ```ObjC
 UIViewController *viewController = [[UIViewController alloc] init];
 GGInScreenNavigationController *navigationController = [[GGInScreenNavigationController alloc] initWithRootViewController:viewController];
+viewController.pageURL = [NSURL URLWithString:@"http://gumgum.com"];
+viewController.keywords = @"An, ad, is, worth, a, million, billion, impressions";
 ```
 
 Keep in mind that in-screen ads are maintained in-between view controller presentations. To control which view controllers display an ad, simply conform the view controllers you'd like to display an ad with `GGAdDelegate`.
@@ -84,7 +95,7 @@ If you happen to conform a view controller to `GGAdDelegate` for displaying a `G
     [super viewWillAppear:animated];
 
     if ([self.navigationController conformsToProtocol:@protocol(GGAdDelegate)]) {
-        self.navigationController.inScreenHidden = YES;
+        [self.navigationController setInScreenHidden:YES animated:YES];
     }
 }
 
@@ -93,20 +104,58 @@ If you happen to conform a view controller to `GGAdDelegate` for displaying a `G
     [super viewWillDisappear:animated];
 
     if ([self.navigationController conformsToProtocol:@protocol(GGAdDelegate)]) {
-        self.navigationController.inScreenHidden = NO;
+        [self.navigationController setInScreenHidden:NO animated:YES];
     }
 }
 ```
 
-Full Documentation can be found [here](http://cocoadocs.org/docsets/GumGumiOSSDK/0.1.1/).
+### Getting an In-Feed Ad
+Conform the instance that manages the UITableView you wish to display ads in with `GGInFeedDataSource`.
+
+At the time in which you'd like to start loading an in-feed ad:
+```ObjC
+CGSize size = CGSizeMake(300, 100);
+id <GGInFeedDataSource> dataSource = // An instance conforming to GGInFeedDataSource
+UIViewController <GGAdDelegate>*viewController = // An instance of UIViewController that conforms to GGAdDelegate
+[[GGInFeedManager sharedManager] getInFeedAdWithSize:size
+                                          dataSource:dataSource
+                                            delegate:delegate];
+```
+As needed, there are helper methods for your `UITableView` so it can accomodate the display of native ads.
+```ObjC
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSUInteger rows = // Number of rows you plan to show in this section
+    NSUINteger nativeAdCount = [[GGInFeedManager sharedManager] nativeAdCountForSection:section];
+    return rows + nativeAdCount;
+}
+```
+```ObjC
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Your UITableViewCell setup logic
+
+    GGNativeAd *nativeAd = [[GGInFeedManager sharedManager] nativeAdAtIndexPath:indexPath cell:cell];
+    if (nativeAd) {
+        // Your logic for displaying the native ad
+    } else {
+        // Your normal cell display implementation
+
+        // Keep in mind you'll want to offset the array of data you are
+        // normally displaying. Here is a rough example...
+        NSArray *rowItems = @[];
+        NSDictionary *cellInfo = rowItems[indexPath.row + offset]; // You should always add the offset!
+    }
+
+    return cell;
+}
+```
+More Documentation can be found [here](http://cocoadocs.org/docsets/GumGumiOSSDK/0.1.1/).
 
 That's it!
 ### Contact
 Follow GumGum on Twitter ([@GumGum])
 ### Author
 Jake Peterson ([@jakenberg])
-### License
-Our license can be found [here.](LICENSE.txt)
+### [License](LICENSE.txt)
 
 [GumGumiOSSDK project]:https://bitbucket.org/gumgum/gumgumiossdk
 [Stack Overflow]:http://www.stackoverflow.com/questions/tagged/gumgum
