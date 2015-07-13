@@ -13,9 +13,13 @@ Pod::Spec.new do |s|
   s.resource              = 'GumGumiOSSDK.bundle'
   s.frameworks            = 'UIKit', 'Security', 'CoreGraphics', 'WebKit', 'Foundation'
   s.weak_framework        = 'MessageUI'
-  s.vendored_frameworks   = 'GumGumiOSSDK.framework'
-  s.vendored_libraries    = 'libGumGumiOSSDK.a'
-  s.xcconfig              = { 'OTHER_LDFLAGS' => '-lObjC' }
+  s.source_files          = 'GumGumiOSSDK/Headers/*.h'
+  s.preserve_paths        = 'GumGumiOSSDK/libGumGumiOSSDK.a'
+  s.vendored_libraries    = 'GumGumiOSSDK/libGumGumiOSSDK.a'
+  s.xcconfig              = {
+                            'LIBRARY_SEARCH_PATHS' => '"$(PODS_ROOT)/GumGumiOSSDK"',
+                            'HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/Headers/GumGumiOSSDK"'
+                          }
 
   s.dependency 'AFNetworking'
   s.dependency 'JSONModel'
