@@ -6,10 +6,19 @@
 //  Copyright (c) 2014 GumGum Inc. All rights reserved.
 //
 
-#import <GumGumiOSSDK/GGAdManager.h>
-#import <GumGumiOSSDK/GGInImageView.h>
-#import <GumGumiOSSDK/GGInScreenNavigationController.h>
-#import <GumGumiOSSDK/GGAdTransitioningDelegate.h>
-#import <GumGumiOSSDK/GGNativeAdManager.h>
-#import <GumGumiOSSDK/GGInFeedManager.h>
-#import <GumGumiOSSDK/GGNativeAd.h>
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
+
+#ifndef _GUMGUMIOSSDK_
+    #define _GUMGUMIOSSDK_
+
+    #import "GGNativeAdManager.h"
+    #import "GGAdManager.h"
+    #import "GGInImageView.h"
+    #import "GGInScreenNavigationController.h"
+    #import "GGAdDelegate.h"
+    #import "GGInFeedManager.h"
+    #import "GGNativeAd.h"
+
+#endif

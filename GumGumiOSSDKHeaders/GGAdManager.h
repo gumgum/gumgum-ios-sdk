@@ -39,15 +39,15 @@ typedef void(^GGAdCompletionBlock)(GGBadge *badgeInfo, NSError *error);
 @property (strong, nonatomic) NSString *zoneId;
 
 /*!
+ *  The url where your app is published in the App Store
+ */
+@property (nonatomic, strong) NSURL *appStoreUrl;
+
+/*!
  *  Specifies if your app costs money to download from the App Store.
  *  Defaults to NO.
  */
 @property (nonatomic) BOOL isPaid;
-
-/*!
- *  The url where your app is published in the App Store
- */
-@property (nonatomic, strong) NSURL *appStoreUrl;
 
 /*!
  *  Subscribes and builds the components specified by the builder
