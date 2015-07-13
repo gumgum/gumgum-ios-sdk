@@ -12,15 +12,15 @@
 @class GGAdView;
 @class GGBadge;
 @class WKProcessPool;
-@class GGURL;
-@class GGAdViewController;
+@class GGBuilder;
+@class GGBuilderViewController;
 
 typedef void(^GGObjectResultsBlock)(id responseObject, NSError *error);
 typedef void(^GGAdCompletionBlock)(GGBadge *badgeInfo, NSError *error);
 
 @protocol GGAdManagerDelegate <NSObject>
 
-- (void)adViewControllerDidFinishLoading:(GGAdViewController *)viewController;
+- (void)adViewControllerDidFinishLoading:(GGBuilderViewController *)viewController;
 
 @end
 
@@ -33,8 +33,8 @@ typedef void(^GGAdCompletionBlock)(GGBadge *badgeInfo, NSError *error);
 /*!
  *  The zone provided to you by our publisher development team.
  *
- *  @discussion The zone must be set in order to serve any advertisments. 
- *              Set this in your app delegate or as early as you can.
+ *  @note The zone must be set in order to serve any advertisments.
+ *        Set this in your app delegate or as early as you can.
  */
 @property (strong, nonatomic) NSString *zoneId;
 
@@ -44,33 +44,33 @@ typedef void(^GGAdCompletionBlock)(GGBadge *badgeInfo, NSError *error);
  */
 @property (nonatomic) BOOL isPaid;
 
+/*!
+ *  The url where your app is published in the App Store
+ */
 @property (nonatomic, strong) NSURL *appStoreUrl;
 
 /*!
- *  Subscribes and builds an adView & badgeButton.
+ *  Subscribes and builds the components specified by the builder
  *
- *  @param url the url you would like the new adView & badgeButton to be associated to.
- *  @param viewControllerDelegate a viewController conforming to GGAdDelegate.
+ *  @param builder the object representing the type of implementation you desire.
  *
- *  @return an array containing the new adView and badgeButton (in that order).
+ *  @note you can use the builder object as a state machine.
  */
-- (NSArray *)subscribeUrl:(GGURL *)url
-                 delegate:(id <GGAdManagerDelegate>)delegate
-   viewControllerDelegate:(UIViewController <GGAdDelegate>*)viewControllerDelegate;
+- (GGBuilderViewController *)enqueueBuilder:(GGBuilder *)builder
+                     viewControllerDelegate:(UIViewController <GGAdDelegate>*)viewControllerDelegate
+                            managerDelegate:(id<GGAdManagerDelegate>)delegate;
 
 /*!
  *  Un-subscribes the adView associated to the url.
  *
- *  @param url the url associated to the adView you'd like to remove.
+ *  @param builder the object representing the implementation of the ad.
  */
-- (void)unSubscribeUrl:(GGURL *)url;
+- (void)dequeueBuilder:(GGBuilder *)builder;
 
-/*!
- *  For GumGum employees to access important ad information
- *
- *  @param url the url of the ad you are interested in seeing the badge for
- *
- */
-- (void)displayAdBadgeViewControllerForUrl:(GGURL *)url;
+- (GGBuilderViewController *)viewControllerForBuilder:(GGBuilder *)builder;
+
+- (void)setIndexPath:(NSIndexPath *)indexPath onBuilder:(GGBuilder *)builder;
+
+- (BOOL)shouldShowAdAtIndexPath:(NSIndexPath *)indexPath builder:(GGBuilder *)builder;
 
 @end

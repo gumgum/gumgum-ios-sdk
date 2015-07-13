@@ -36,6 +36,6 @@
 /*!
  *  An optional value for tracking re-use in table views.
  */
-@property (nonatomic, copy) NSIndexPath *indexPath;
+- (void)setIndexPath:(NSIndexPath *)indexPath;
 
 @end
