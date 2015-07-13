@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                  = "GumGumiOSSDK"
-  s.version               = "0.1.4.4"
+  s.version               = "0.1.4.5"
   s.platform              = :ios, '7.1'
   s.summary               = "Serve GumGum ads in your native mobile app."
   s.description           = "GumGum is an advertising publisher platform. It is the forefront of in-image technology."
@@ -18,9 +18,9 @@ Pod::Spec.new do |s|
   s.vendored_libraries    = 'GumGumiOSSDK/libGumGumiOSSDK.a'
   s.xcconfig              = {
                             'LIBRARY_SEARCH_PATHS' => '"$(PODS_ROOT)/GumGumiOSSDK"',
-                            'HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/Headers/GumGumiOSSDK"'
+                            'HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/GumGumiOSSDK/GumGumiOSSDKHeaders"'
                           }
 
-  s.dependency 'AFNetworking'
-  s.dependency 'JSONModel'
+  s.dependency 'AFNetworking', '~> 2.5'
+  s.dependency 'JSONModel', '~> 1.1'
 end
