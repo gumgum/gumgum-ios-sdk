@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                  = "GumGumiOSSDK"
-  s.version               = "0.1.4.6"
+  s.version               = "0.1.5"
   s.platform              = :ios, '7.1'
   s.summary               = "Serve GumGum ads in your native mobile app."
   s.description           = "GumGum is an advertising publisher platform. It is the forefront of in-image technology."
@@ -20,7 +20,4 @@ Pod::Spec.new do |s|
                             'LIBRARY_SEARCH_PATHS' => '"$(PODS_ROOT)/GumGumiOSSDK"',
                             'HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/GumGumiOSSDK/GumGumiOSSDKHeaders"'
                           }
-
-  s.dependency 'AFNetworking', '~> 2.5'
-  s.dependency 'JSONModel', '~> 1.1'
 end
