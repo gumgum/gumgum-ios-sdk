@@ -14,9 +14,7 @@ Pod::Spec.new do |s|
   s.frameworks            = 'UIKit', 'Security', 'CoreGraphics', 'WebKit', 'Foundation'
   s.weak_framework        = 'MessageUI'
   s.source_files          = 'GumGumiOSSDK/GumGumiOSSDKHeaders/*.h'
-  s.preserve_paths        = 'GumGumiOSSDK/libGumGumiOSSDK.a'
   s.preserve_paths        = 'GumGumiOSSDK/GumGumiOSSDK.framework'
-  s.vendored_libraries    = 'GumGumiOSSDK/libGumGumiOSSDK.a'
   s.vendored_frameworks   = 'GumGumiOSSDK/GumGumiOSSDK.framework'
   s.xcconfig              = {
                             'LIBRARY_SEARCH_PATHS' => '"$(PODS_ROOT)/GumGumiOSSDK"',
