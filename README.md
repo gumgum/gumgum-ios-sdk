@@ -130,7 +130,7 @@ If you happen to conform a view controller to `GGAdDelegate` for displaying a `G
 ```
 
 ## Getting an In-Feed Ad
-Conform the instance that manages the UITableView you wish to display ads in with `GGInFeedDataSource`.
+Conform the instance that manages the `UITableView` you wish to display ads in with `GGInFeedDataSource`.
 
 At the time in which you'd like to start loading an in-feed ad:
 ```ObjC
