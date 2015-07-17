@@ -83,6 +83,7 @@ Setup your app's information. Do this in your App Delegate or as early as you ca
 Inherit the `UIImageView` you want your ad to be placed in from `GGInImageView`.
 
 __If you use storyboards__, you will need to change the "Custom Class" field of your `UIImageView` to `GGInImageView`:
+
 ![In-Image custom class example](https://s3.amazonaws.com/gumgum-content/ios/prod/images/in-image-custom-class-example.png)
 
 In `-viewDidLoad` (or any method called after your initialization):
