@@ -29,7 +29,7 @@ If you have never used [Cocoapods] before, you should [install it first].
 ```ObjC
 #import <GumGumiOSSDK/GumGumiOSSDK.h>
 ```
-Setup your App's information. Do this in your App Delegate or as early as you can.
+Setup your app's information. Do this in your App Delegate or as early as you can.
 ```ObjC
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Make sure you have setup your keyWindow first.
@@ -44,15 +44,17 @@ Setup your App's information. Do this in your App Delegate or as early as you ca
     return YES;
 }
 ```
-#### Once you're setup, there are 4 different types of units you can use:
+### Once you're setup, there are 4 different types of units you can use:
 * [Native Ad](https://github.com/gumgum/gumgum-ios-sdk#getting-a-native-ad)
 * [In-Image Ad](https://github.com/gumgum/gumgum-ios-sdk#getting-an-in-image-ad)
 * [In-Screen Ad](https://github.com/gumgum/gumgum-ios-sdk#getting-an-in-screen-ad)
 * [In-Feed Ad](https://github.com/gumgum/gumgum-ios-sdk#getting-an-in-feed-ad)
 
-### Getting a Native Ad
+-------
+## Getting a Native Ad
 ```ObjC
 [GGNativeAdManager getNativeAdForSize:CGSizeMake(320, 100)
+                          placementId:// Your placement id (provided by GumGum)
                viewControllerDelegate:// A UIViewController conforming to GGAdDelegate
                            completion:^(GGNativeAd *nativeAd, NSError *error) {
     // Your logic for displaying the native ad
@@ -66,7 +68,7 @@ Setup your App's information. Do this in your App Delegate or as early as you ca
 }];
 ```
 
-### Getting an In-Image Ad
+## Getting an In-Image Ad
 Inherit the `UIImageView` you want your ad to be placed from `GGInImageView`.
 
 __If you use storyboards__ you will need to change the **Custom Class** field of your `UIImageView`.
@@ -90,8 +92,11 @@ To conform a `UIViewController` to `GGAdDelegate`:
 ```ObjC
 @interface YourViewController: UIViewController <GGAdDelegate>
 ```
-
-### Getting an In-Screen Ad
+If you're using multiple instances of `GGInImageView` at a time (e.g. inside cells of a tableView), you can prevent ads from accidentally being re-used via:
+```ObjC
+[imageView setIndexPath:indexPath];
+```
+## Getting an In-Screen Ad
 In-screen ads are controlled by an instance of `UINavigationController`.
 ```ObjC
 UIViewController *viewController = [[UIViewController alloc] init];
@@ -100,7 +105,7 @@ navigationController.pageURL = [NSURL URLWithString:@"http://gumgum.com"];
 navigationController.keywords = @"An, ad, is, worth, a, million, billion, impressions";
 ```
 
-Keep in mind that in-screen ads are maintained in-between view controller presentations. To control which view controllers display an ad, simply conform the view controllers you'd like to display an ad with `GGAdDelegate`.
+Keep in mind that in-screen ads are maintained in-between view controller presentations. To control which view controllers display an ad, simply conform the view controllers you'd like to display an ad in with `GGAdDelegate`.
 
 If you happen to conform a view controller to `GGAdDelegate` for displaying a `GGInImageView`, but simeltaneously don't want an in-screen ad to be displayed, simply set the `inScreenHidden` property on your navigation controller:
 ```ObjC
@@ -124,7 +129,7 @@ If you happen to conform a view controller to `GGAdDelegate` for displaying a `G
 }
 ```
 
-### Getting an In-Feed Ad
+## Getting an In-Feed Ad
 Conform the instance that manages the UITableView you wish to display ads in with `GGInFeedDataSource`.
 
 At the time in which you'd like to start loading an in-feed ad:
@@ -133,6 +138,7 @@ CGSize size = CGSizeMake(300, 100);
 id <GGInFeedDataSource> dataSource = // An instance conforming to GGInFeedDataSource
 UIViewController <GGAdDelegate>*viewController = // An instance of UIViewController that conforms to GGAdDelegate
 [[GGInFeedManager sharedManager] getInFeedAdWithSize:size
+                                         placementId:// Your placement id (provided by GumGum)
                                           dataSource:dataSource
                                             delegate:delegate];
 ```
