@@ -20,10 +20,21 @@ GumGum is the leading in-image and in-screen advertising platform, driving brand
 - If you have a feature request, open an issue.
 
 ## Installation
+#### Cocoapods
+If you have never used [Cocoapods] before, you'll need to [install it first].
 ```
 pod 'GumGumiOSSDK'
 ```
-If you have never used [Cocoapods] before, you should [install it first].
+#### Alternatively, if you refuse to use the greatest tool ever built for iOS:
+1) Add links to the required frameworks in your target's build phases:
+![Installation step 1](https://s3.amazonaws.com/gumgum-content/ios/prod/images/custom-installation-step-1.png)
+**Note:** `MessageUI.framework` is optional
+
+2) Link `GumGumiOSSDK.framework` with your target:
+![Installation step 2](https://s3.amazonaws.com/gumgum-content/ios/prod/images/custom-installation-step-2.png)
+
+3) Add `GumGumiOSSDK.bundle` to your target's "Copy Bundle Resources" build phase:
+![Installation step 3](https://s3.amazonaws.com/gumgum-content/ios/prod/images/custom-installation-step-3.png)
 
 ## Getting Started
 ```ObjC
@@ -69,9 +80,10 @@ Setup your app's information. Do this in your App Delegate or as early as you ca
 ```
 
 ## Getting an In-Image Ad
-Inherit the `UIImageView` you want your ad to be placed from `GGInImageView`.
+Inherit the `UIImageView` you want your ad to be placed in from `GGInImageView`.
 
-__If you use storyboards__ you will need to change the **Custom Class** field of your `UIImageView`.
+__If you use storyboards__, you will need to change the "Custom Class" field of your `UIImageView` to `GGInImageView`:
+![In-Image custom class example](https://s3.amazonaws.com/gumgum-content/ios/prod/images/in-image-custom-class-example.png)
 
 In `-viewDidLoad` (or any method called after your initialization):
 ```ObjC
