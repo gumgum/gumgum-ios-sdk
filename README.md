@@ -23,7 +23,7 @@ GumGum is the leading in-image and in-screen advertising platform, driving brand
 ```
 pod 'GumGumiOSSDK'
 ```
-If you have never used [Cocoapods] before, you will need to [install it first].
+If you have never used [Cocoapods] before, you should [install it first].
 
 ## Getting Started
 ```ObjC
