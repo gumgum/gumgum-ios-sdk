@@ -25,7 +25,7 @@ If you have never used [Cocoapods] before, you'll need to [install it first].
 ```
 pod 'GumGumiOSSDK'
 ```
-#### Alternatively, if you refuse to use the greatest tool ever built for iOS:
+#### Alternatively, if you would like to install the framework manually:
 1) Add links to the required frameworks in your target's build phases:
 ![Installation step 1](https://s3.amazonaws.com/gumgum-content/ios/prod/images/custom-installation-step-1.png)
 **Note:** `MessageUI.framework` is optional
