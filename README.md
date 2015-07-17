@@ -56,6 +56,13 @@ Setup your App's information. Do this in your App Delegate or as early as you ca
                viewControllerDelegate:self
                            completion:^(GGNativeAd *nativeAd, NSError *error) {
     // Your logic for displaying the native ad
+
+    /* GGNativeAd model contains:
+     *  title
+     *  adDescription
+     *  imageView.image or imageUrl
+     *  sponsoredBy
+     */
 }];
 ```
 
