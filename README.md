@@ -56,7 +56,7 @@ Setup your app's information. Do this in your App Delegate or as early as you ca
     return YES;
 }
 ```
-### Once you're setup, there are 4 different types of units you can use:
+### Once you're setup, there are 4 different types of ad products to choose from:
 * [Native Ad](https://github.com/gumgum/gumgum-ios-sdk#getting-a-native-ad)
 * [In-Image Ad](https://github.com/gumgum/gumgum-ios-sdk#getting-an-in-image-ad)
 * [In-Screen Ad](https://github.com/gumgum/gumgum-ios-sdk#getting-an-in-screen-ad)
