@@ -53,7 +53,7 @@ Setup your App's information. Do this in your App Delegate or as early as you ca
 ### Getting a Native Ad
 ```ObjC
 [GGNativeAdManager getNativeAdForSize:CGSizeMake(320, 100)
-               viewControllerDelegate:self
+               viewControllerDelegate:// A UIViewController conforming to GGAdDelegate
                            completion:^(GGNativeAd *nativeAd, NSError *error) {
     // Your logic for displaying the native ad
 
