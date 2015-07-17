@@ -40,6 +40,7 @@
  *  @param viewControllerDelegate a view controller prepared to handle presentation actions
  */
 - (void)getInFeedAdWithSize:(CGSize)size
+                placementId:(NSUInteger)placementId
                  dataSource:(id <GGInFeedDataSource>)dataSource
                    delegate:(UIViewController <GGAdDelegate>*)viewControllerDelegate;
 
@@ -75,7 +76,11 @@
  */
 - (NSInteger)offsetForIndexPath:(NSIndexPath *)indexPath;
 
-- (void)trackImpressionForInSlotAd:(GGNativeAd *)inSlotAd;
-- (void)trackClickForInSlotAd:(GGNativeAd *)inSlotAd;
+/*!
+ *  Required clean up step for native ads being shown in tableView
+ */
+- (void)clearNativeAds;
+
+- (void)trackClickForNativeAd:(GGNativeAd *)nativeAd;
 
 @end

@@ -25,7 +25,7 @@ pod 'GumGumiOSSDK'
 ```
 If you have never used [Cocoapods] before, you will need to [install it first].
 
-## Usage
+## Getting Started
 ```ObjC
 #import <GumGumiOSSDK/GumGumiOSSDK.h>
 ```
@@ -44,6 +44,12 @@ Setup your App's information. Do this in your App Delegate or as early as you ca
     return YES;
 }
 ```
+#### Once you're setup, there are 4 different types of units you can use:
+* [Native Ad](https://github.com/gumgum/gumgum-ios-sdk#getting-a-native-ad)
+* [In-Image Ad](https://github.com/gumgum/gumgum-ios-sdk#getting-an-in-image-ad)
+* [In-Screen Ad](https://github.com/gumgum/gumgum-ios-sdk#getting-an-in-screen-ad)
+* [In-Feed Ad](https://github.com/gumgum/gumgum-ios-sdk#getting-an-in-feed-ad)
+
 ### Getting a Native Ad
 ```ObjC
 [GGNativeAdManager getNativeAdForSize:CGSizeMake(320, 100)

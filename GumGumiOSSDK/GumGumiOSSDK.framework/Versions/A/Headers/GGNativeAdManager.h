@@ -24,6 +24,7 @@ typedef void (^GGNativeAdCompletionBlock)(GGNativeAd *ad, NSError *error);
  *  @param completion             a block responsible for returning the native or an error
  */
 + (void)getNativeAdForSize:(CGSize)size
+               placementId:(NSUInteger)placementId
     viewControllerDelegate:(UIViewController *)viewControllerDelegate
                 completion:(GGNativeAdCompletionBlock)completion;
 
