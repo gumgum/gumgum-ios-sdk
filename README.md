@@ -96,8 +96,8 @@ In-screen ads are controlled by an instance of `UINavigationController`.
 ```ObjC
 UIViewController *viewController = [[UIViewController alloc] init];
 GGInScreenNavigationController *navigationController = [[GGInScreenNavigationController alloc] initWithRootViewController:viewController];
-viewController.pageURL = [NSURL URLWithString:@"http://gumgum.com"];
-viewController.keywords = @"An, ad, is, worth, a, million, billion, impressions";
+navigationController.pageURL = [NSURL URLWithString:@"http://gumgum.com"];
+navigationController.keywords = @"An, ad, is, worth, a, million, billion, impressions";
 ```
 
 Keep in mind that in-screen ads are maintained in-between view controller presentations. To control which view controllers display an ad, simply conform the view controllers you'd like to display an ad with `GGAdDelegate`.
@@ -108,7 +108,8 @@ If you happen to conform a view controller to `GGAdDelegate` for displaying a `G
     [super viewWillAppear:animated];
 
     if ([self.navigationController conformsToProtocol:@protocol(GGAdDelegate)]) {
-        [self.navigationController setInScreenHidden:YES animated:YES];
+        GGInScreenNavigationController *navController = (GGInScreenNavigationController *)self.navigationController;
+        [navController setInScreenHidden:YES animated:YES];
     }
 }
 
@@ -117,7 +118,8 @@ If you happen to conform a view controller to `GGAdDelegate` for displaying a `G
     [super viewWillDisappear:animated];
 
     if ([self.navigationController conformsToProtocol:@protocol(GGAdDelegate)]) {
-        [self.navigationController setInScreenHidden:NO animated:YES];
+        GGInScreenNavigationController *navController = (GGInScreenNavigationController *)self.navigationController;
+        [navController setInScreenHidden:NO animated:YES];
     }
 }
 ```
