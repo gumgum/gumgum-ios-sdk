@@ -36,11 +36,15 @@
  *  Starts the setup of a new in feed ad.
  *
  *  @param size                   the size of the view that the native ad will be displayed in
+ *  @param placementId            the placement ID provided to you by GumGum
+ *  @param indexPath              the indexPath you would like to see the ad in your tableView or collectionView.
+ *                                If nil, the indexPath of where the ad is placed is chosen for you.
  *  @param dataSource             an instance conforming to GGInFeedDataSource
  *  @param viewControllerDelegate a view controller prepared to handle presentation actions
  */
 - (void)getInFeedAdWithSize:(CGSize)size
                 placementId:(NSUInteger)placementId
+                  indexPath:(NSIndexPath *)indexPath
                  dataSource:(id <GGInFeedDataSource>)dataSource
                    delegate:(UIViewController <GGAdDelegate>*)viewControllerDelegate;
 
