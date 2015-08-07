@@ -150,6 +150,7 @@ id <GGInFeedDataSource> dataSource = // An instance conforming to GGInFeedDataSo
 UIViewController <GGAdDelegate>*viewController = // An instance of UIViewController that conforms to GGAdDelegate
 [[GGInFeedManager sharedManager] getInFeedAdWithSize:size
                                          placementId:// Your placement id (provided by GumGum)
+                                           indexPath:// Optional. If you wish to specify exactly where the ad should be placed.
                                           dataSource:dataSource
                                             delegate:delegate];
 ```
