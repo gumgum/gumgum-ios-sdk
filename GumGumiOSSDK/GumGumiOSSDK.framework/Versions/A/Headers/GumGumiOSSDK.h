@@ -14,7 +14,7 @@
     #define _GUMGUMIOSSDK_
 
     #import "GGNativeAdManager.h"
-    #import "GGAdManager.h"
+    #import "GumGumSDK.h"
     #import "GGInImageView.h"
     #import "GGInScreenNavigationController.h"
     #import "GGAdDelegate.h"

@@ -28,6 +28,8 @@
  *  Words (delimited by commas) that describe the page the ad is being served on.
  */
 @property (strong, nonatomic) NSString *keywords;
+
+@property (nonatomic, weak) UIViewController <GGAdDelegate>*viewControllerDelegate;
 @end
 
 @interface UIViewController (GGInScreenNavigationControllerItem)

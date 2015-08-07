@@ -47,11 +47,8 @@ Setup your app's information. Do this in your App Delegate or as early as you ca
     // Make sure you have setup your keyWindow first.
     [window makeKeyAndVisible];
 
-    // All values are required.
-    GGAdManager *manager = [GGAdManager sharedManager];
-    manager.zoneId = @"your zone ID";
-    manager.appStoreUrl = [NSURL URLWithString:@"your app store url or website url"];
-    manager.isPaid = YES; // Defaults to NO
+    NSURL *url = [NSURL URLWithString:@"your app store url or website url"];
+    [GumGumSDK initializeWithZoneId:@"your zone ID" appStoreURL:url isPaid:YES];
 
     return YES;
 }
