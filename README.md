@@ -181,6 +181,7 @@ As needed, there are helper methods for your `UITableView` so it can accomodate 
     return cell;
 }
 ```
+-------
 More Documentation can be found [here](http://cocoadocs.org/docsets/GumGumiOSSDK/0.1.1/).
 
 That's it!
