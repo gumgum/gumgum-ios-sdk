@@ -103,10 +103,6 @@ To conform a `UIViewController` to `GGAdDelegate`:
 ```ObjC
 @interface YourViewController: UIViewController <GGAdDelegate>
 ```
-If you're using multiple instances of `GGInImageView` at a time (e.g. inside cells of a tableView), you can prevent ads from accidentally being re-used via:
-```ObjC
-[imageView setIndexPath:indexPath];
-```
 ## Getting an In-Screen Ad
 In-screen ads are controlled by an instance of `UINavigationController`.
 ```ObjC
