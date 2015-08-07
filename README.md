@@ -6,9 +6,9 @@ GumGum is the leading in-image and in-screen advertising platform, driving brand
 ## Features
 - [x] Swift & Objective-C compatible
 - [x] Cocoapods support
-- [x] In-image & In-screen ad support
 - [x] Native light box for optimal video ads
-- [x] RTB support
+- [x] In-image, In-screen, & Native ad support
+- [x] OpenRTB 2.3 spec support
 
 ## Requirements
 - iOS 7.1+
