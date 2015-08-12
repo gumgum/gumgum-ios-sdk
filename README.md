@@ -3,6 +3,8 @@ GumGum iOS SDK
 
 GumGum is the leading in-image and in-screen advertising platform, driving brand engagement for advertisers and increased revenue for publishers across every screen.
 
+[![Gem Version](https://img.shields.io/cocoapods/v/GumGumiOSSDK.svg)](https://img.shields.io/cocoapods/v/GumGumiOSSDK.svg)
+
 ## Features
 - [x] Swift & Objective-C compatible
 - [x] Cocoapods support
@@ -95,7 +97,7 @@ In `-viewDidLoad` (or any method called after your initialization):
     imageView.pageURL = [NSURL URLWithString:@"http://gumgum.com"];
     imageView.delegate = // A UIViewController conforming to GGAdDelegate
 
-    // The ad will NOT start loading until an image is set.
+    // The ad will NOT start loading until an image with at least 120px height is set.
     imageView.image = [UIImage alloc] init];
 }
 ```
