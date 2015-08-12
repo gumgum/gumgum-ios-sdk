@@ -1,9 +1,7 @@
-GumGum iOS SDK
-===================
+# GumGum iOS SDK
+[![Gem Version](https://img.shields.io/cocoapods/v/GumGumiOSSDK.svg)](https://img.shields.io/cocoapods/v/GumGumiOSSDK.svg)
 
 GumGum is the leading in-image and in-screen advertising platform, driving brand engagement for advertisers and increased revenue for publishers across every screen.
-
-[![Gem Version](https://img.shields.io/cocoapods/v/GumGumiOSSDK.svg)](https://img.shields.io/cocoapods/v/GumGumiOSSDK.svg)
 
 ## Features
 - [x] Swift & Objective-C compatible
