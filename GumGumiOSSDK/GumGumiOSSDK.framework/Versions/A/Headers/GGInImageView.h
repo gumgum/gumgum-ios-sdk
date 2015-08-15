@@ -38,4 +38,12 @@
  */
 @property (nonatomic) BOOL adHidden;
 
+/*!
+ *  A helper method for re-using many imageViews inside cells of 
+ *  an instance of UITableView
+ *
+ *  @param indexPath the current indexPath you're placing the imageView in.
+ */
+- (void)setIndexPath:(NSIndexPath *)indexPath;
+
 @end
