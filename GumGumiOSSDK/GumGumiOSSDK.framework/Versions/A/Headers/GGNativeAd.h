@@ -18,7 +18,6 @@
 @property (nonatomic, strong) NSNumber *objectId;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSURL *imageUrl;
-@property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) NSString *adDescription;
 @property (nonatomic, strong) NSString *sponsoredBy;
 

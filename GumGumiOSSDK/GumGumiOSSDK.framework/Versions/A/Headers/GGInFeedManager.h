@@ -87,4 +87,6 @@
 
 - (void)trackClickForNativeAd:(GGNativeAd *)nativeAd;
 
+- (UIImage *)imageForNativeAd:(GGNativeAd *)nativeAd;
+
 @end
