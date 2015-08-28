@@ -9,11 +9,23 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "GGNativeAd.h"
-#import "GGAdDelegate.h"    
+#import "GGAdDelegate.h"
+
+@protocol GGNativeAdDelegate <NSObject>
+
+- (void)didFinishLoadingNativeAd:(GGNativeAd *)nativeAd;
+
+@optional
+
+- (void)nativeAdFailedWithError:(NSError *)error;
+
+@end
 
 typedef void (^GGNativeAdCompletionBlock)(GGNativeAd *ad, NSError *error);
 
 @interface GGNativeAdManager : NSObject
+
++ (instancetype)sharedManager;
 
 /*!
  *  Creates and returns a native ad for displaying inline
@@ -21,11 +33,11 @@ typedef void (^GGNativeAdCompletionBlock)(GGNativeAd *ad, NSError *error);
  *
  *  @param size                   the size of the view that the native ad will be displayed in
  *  @param viewControllerDelegate a view controller prepared to handle presentation actions
- *  @param completion             a block responsible for returning the native or an error
+ *  @param delegate               responsible for returning a native or an error
  */
-+ (void)getNativeAdForSize:(CGSize)size
+- (void)getNativeAdForSize:(CGSize)size
                placementId:(NSUInteger)placementId
-    viewControllerDelegate:(UIViewController *)viewControllerDelegate
-                completion:(GGNativeAdCompletionBlock)completion;
+    viewControllerDelegate:(UIViewController <GGAdDelegate>*)viewControllerDelegate
+                  delegate:(id <GGNativeAdDelegate>)delegate;
 
 @end

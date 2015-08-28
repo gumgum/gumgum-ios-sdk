@@ -87,6 +87,7 @@
 
 - (void)trackClickForNativeAd:(GGNativeAd *)nativeAd;
 
-- (UIImage *)imageForNativeAd:(GGNativeAd *)nativeAd;
+- (void)fetchImageForNativeAd:(GGNativeAd *)nativeAd
+              completionBlock:(void(^)(UIImage *nativeImage))completion;
 
 @end

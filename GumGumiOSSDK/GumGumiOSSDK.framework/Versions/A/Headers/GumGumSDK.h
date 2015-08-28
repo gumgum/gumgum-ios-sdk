@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+static NSString * const GumGumSDKErrorDomain = @"GumGumSDKErrorDomain";
+
 @interface GumGumSDK : NSObject
 /*!
  *  Will initialize the GumGum iOS SDK. Set this in your app delegate or as early as you can.

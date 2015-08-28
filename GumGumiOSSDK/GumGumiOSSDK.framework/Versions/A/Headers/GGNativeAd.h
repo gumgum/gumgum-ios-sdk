@@ -11,7 +11,7 @@
 
 @class GGAd;
 
-@interface GGNativeAd : NSObject
+@interface GGNativeAd : NSObject <NSCopying>
 
 - (id)initWithAd:(GGAd *)ad;
 
