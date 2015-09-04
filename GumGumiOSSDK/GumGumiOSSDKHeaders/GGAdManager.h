@@ -51,4 +51,6 @@ typedef void(^GGAdCompletionBlock)(GGBadge *badgeInfo, NSError *error);
 - (WKProcessPool *)processPool;
 - (dispatch_queue_t)operationQueue;
 
+- (void)openURL:(NSURL *)url inViewController:(UIViewController *)viewController;
+
 @end
