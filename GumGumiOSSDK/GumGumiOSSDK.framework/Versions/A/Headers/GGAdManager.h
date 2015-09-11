@@ -53,4 +53,6 @@ typedef void(^GGAdCompletionBlock)(GGBadge *badgeInfo, NSError *error);
 
 - (void)openURL:(NSURL *)url inViewController:(UIViewController *)viewController;
 
+- (void)requestPermissionToServeZone:(NSString *)zoneId completion:(void(^)(BOOL shouldServe))completion;
+
 @end
