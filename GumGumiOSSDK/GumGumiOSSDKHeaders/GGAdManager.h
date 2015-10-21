@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "GGAdDelegate.h"
 
-@class GGAdView;
+@class GGAdViewController;
 @class GGBadge;
 @class WKProcessPool;
 @class GGBuilder;
@@ -45,8 +45,8 @@ typedef void(^GGAdCompletionBlock)(GGBadge *badgeInfo, NSError *error);
  *  @note you can use the builder object as a state machine.
  */
 - (GGBuilderController *)enqueueBuilder:(GGBuilder *)builder
-                     viewControllerDelegate:(UIViewController <GGAdDelegate>*)viewControllerDelegate
-                            managerDelegate:(id<GGAdManagerDelegate>)delegate;
+                 viewControllerDelegate:(UIViewController <GGAdDelegate>*)viewControllerDelegate
+                        managerDelegate:(id<GGAdManagerDelegate>)delegate;
 
 - (WKProcessPool *)processPool;
 - (dispatch_queue_t)operationQueue;

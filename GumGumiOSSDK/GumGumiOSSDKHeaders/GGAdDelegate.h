@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class GGBadge;
-@class GGAdView;
+@class GGAdViewController;
 
 /*!
  *  A protocol you can use to conform your UIViewController to.
@@ -32,7 +32,7 @@
  *
  *  @param adView the adView that contains the ad that was loaded.
  */
-- (void)didFinishLoad:(GGAdView *)adView;
+- (void)didFinishLoad:(GGAdViewController *)adView;
 
 /*!
  *  A callback for when an ad was closed by the user.

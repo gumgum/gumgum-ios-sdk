@@ -22,5 +22,6 @@
     #import "GGNativeAd.h"
     #import "GGFullScreenAdViewController.h"
     #import "GGAdManager.h"
+    #import "GGInSlotView.h"
 
 #endif
