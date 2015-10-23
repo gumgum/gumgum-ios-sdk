@@ -55,4 +55,10 @@ typedef void(^GGAdCompletionBlock)(GGBadge *badgeInfo, NSError *error);
 
 - (void)requestPermissionToServeZone:(NSString *)zoneId completion:(void(^)(BOOL shouldServe))completion;
 
+#pragma mark - Convenience
+
++ (BOOL)application:(UIApplication *)application
+            openURL:(nonnull NSURL *)url
+            options:(nonnull NSDictionary<NSString *, id> *)options;
+
 @end
