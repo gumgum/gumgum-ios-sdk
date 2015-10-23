@@ -36,7 +36,9 @@ pod 'GumGumiOSSDK'
 3) Add `GumGumiOSSDK.bundle` to your target's "Copy Bundle Resources" build phase:
 ![Installation step 3](https://s3.amazonaws.com/gumgum-content/ios/prod/images/custom-installation-step-3.png)
 
-4) Build (<kbd>&#8984;</kbd>+<kbd>B</kbd>) your project to make sure everything is working properly.
+4) Add the `-ObjC` compiler flag to "**Other Linker Flags**" in your project target's build settings.
+
+5) Build (<kbd>&#8984;</kbd>+<kbd>B</kbd>) your project to make sure everything is working properly.
 ## Getting Started
 ```ObjC
 #import <GumGumiOSSDK/GumGumiOSSDK.h>
